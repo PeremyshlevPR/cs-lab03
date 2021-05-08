@@ -50,9 +50,35 @@ void svg_text(double left, double baseline, string text)
     cout << "<text x='" << left << "' y='" << baseline << "'>" << text << "</text>\n";
 }
 
-void svg_rect(double left, double baseline, size_t width, double height, string stroke = "black", string fill = "black")
+void svg_rect(double left, double baseline, size_t width, double height, string stroke, string fill = "black")
 {
     cout << "<rect x ='" << left << "' y ='" << baseline << "' width ='" << width << "' height ='" << height << "' stroke ='" << stroke << "' fill ='" << fill << "' />\n";
+}
+
+string enter_color()
+{
+    string color;
+    bool correct = false;
+
+    while (!correct)
+    {
+        cin >> color;
+        bool probels = false;
+
+        for (size_t i = 0; i < color.length(); i++)
+        {
+            if (color[i] == ' ')
+                probels = true;
+        }
+
+        if ((color[0] == '#') || (!probels))
+        {
+            correct = true;
+        }
+        else
+            cout << "Your enter is incorrect, try again";
+    }
+    return color;
 }
 
 void show_histogram_svg(const vector<size_t>& bins) 
@@ -78,6 +104,7 @@ void show_histogram_svg(const vector<size_t>& bins)
     }
     const bool scaling_needed = (max_count * BLOCK_WIDTH) > MAX_WIDTH;
 
+    string stroke;
     for (size_t bin : bins) 
     {
         const double bin_width = BLOCK_WIDTH * bin;
@@ -88,8 +115,11 @@ void show_histogram_svg(const vector<size_t>& bins)
             width = (bin_width * scaling_factor);
         }
 
+        
+
+        stroke = enter_color();
         svg_text(TEXT_LEFT, top + TEXT_BASELINE, to_string(bin));
-        svg_rect(TEXT_WIDTH, top, width, BIN_HEIGHT, red, green);
+        svg_rect(TEXT_WIDTH, top, width, BIN_HEIGHT, stroke, green);
         top += BIN_HEIGHT;
     }
     svg_end();
@@ -145,6 +175,8 @@ const auto numbers = input_numbers(count);
     size_t bin_count;
     cerr << "Enter column count: ";
     cin >> bin_count;
+
+
 
     // Обработка данных
     // поиск min и max
