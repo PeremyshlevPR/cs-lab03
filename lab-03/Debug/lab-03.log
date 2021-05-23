@@ -1,0 +1,8 @@
+﻿  histogram.cpp
+  lab-03.cpp
+D:\programms\lab-03\lab-03\lab-03.cpp(112,22): warning C4244: инициализация: преобразование "const double" в "size_t", возможна потеря данных
+D:\programms\lab-03\lab-03\lab-03.cpp(115,32): warning C4244: =: преобразование "double" в "size_t", возможна потеря данных
+D:\programms\lab-03\lab-03\lab-03.cpp(137,29): warning C4244: инициализация: преобразование "double" в "size_t", возможна потеря данных
+D:\programms\lab-03\lab-03\lab-03.cpp(144,27): warning C4244: инициализация: преобразование "double" в "size_t", возможна потеря данных
+  Создание кода...
+  lab-03.vcxproj -> D:\programms\lab-03\Debug\lab-03.exe
